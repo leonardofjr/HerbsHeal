@@ -1,11 +1,17 @@
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/herbalcrystal';
+var dbURI = 'mongodb://localhost/HerbsHeal';
+
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
 
 mongoose.connect(dbURI);
+
+
+
 
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function() {
@@ -46,4 +52,4 @@ process.on('SIGTERM', function() {
 });
 
 // BRING IN YOUR SCHEMAS & MODELS
-require('./indica');
+require('./sativaModel');
