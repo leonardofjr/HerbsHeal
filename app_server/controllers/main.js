@@ -1,10 +1,17 @@
 var request = require('request');
 
+var apiOptions = {
+    server: 'http://localhost:3000/'
+}
+if (process.env.NODE_ENV = "production") {
+	apiOptions.server = 'https://herbsheal.herokuapp.com/';
+}
+
 module.exports.call = function(req, res, next) {
 	// Setting request options
 
 	var requestOptions = {
-		url: 'http://localhost:3000/api/strains/sativa/',
+		url: apiOptions.server + 'api/strains/sativa/',
 		method: 'GET',
 		json: {}
 	}
