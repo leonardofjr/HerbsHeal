@@ -2,8 +2,14 @@ var express = require('express');
 var router = express.Router();
 var ctrlSativaStrains = require('../controllers/sativa');
 
+
+
+var cors = require('cors')
+var app = express();
+
+
 // Read All
-router.get('/sativa', ctrlSativaStrains.sativaReadAll)
+router.get('/sativa', cors(),ctrlSativaStrains.sativaReadAll)
 
 // Read By ID
 router.get('/sativa/:sativaid', ctrlSativaStrains.sativaReadOne);
